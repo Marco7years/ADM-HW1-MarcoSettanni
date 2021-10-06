@@ -285,3 +285,193 @@ for _ in range(lines):
         print(int(a)//int(b))
     except (ZeroDivisionError, ValueError) as e:
         print("Error Code:", e)
+
+# Birthday Cake Candles
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'birthdayCakeCandles' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY candles as parameter.
+#
+
+def birthdayCakeCandles(candles):
+    max = 0
+    for i in candles:
+        if i > max:
+            max = i
+
+    total = 0
+    for i in candles:
+        if i == max:
+            total+=1
+    return total
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    candles_count = int(input().strip())
+
+    candles = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(candles)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+# Number Line Jumps
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'kangaroo' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. INTEGER x1
+#  2. INTEGER v1
+#  3. INTEGER x2
+#  4. INTEGER v2
+#
+
+def kangaroo(x1, v1, x2, v2):
+    
+    if((x1 > x2 and v1 >= v2) or (x2 > x1 and v2 >= v1)):
+        return "NO"
+    
+    if(x1 < x2):
+        while((x1-x2) < 0):
+            x1+=v1
+            x2+=v2
+            if(x1 == x2):
+                return "YES"
+        return "NO"
+    
+    if(x2 < x1):
+        while((x2-x1) < 0):
+            x1+=v1
+            x2+=v2
+            if(x1 == x2):
+                return "YES"
+        return "NO"
+    if(x1 == x2):
+        return "YES"
+    return "NO"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    x1 = int(first_multiple_input[0])
+
+    v1 = int(first_multiple_input[1])
+
+    x2 = int(first_multiple_input[2])
+
+    v2 = int(first_multiple_input[3])
+
+    result = kangaroo(x1, v1, x2, v2)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+# Viral Advertising
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'viralAdvertising' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER n as parameter.
+#
+
+def viralAdvertising(n):
+    shared = 5
+    cumulative = 0
+    for i in range(1,n+1):
+        liked = shared//2
+        cumulative+=liked
+        shared = liked*3
+    return cumulative
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    result = viralAdvertising(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+# Recursive Digit Sum
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'superDigit' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. STRING n
+#  2. INTEGER k
+#
+
+def digsum(x):
+    return str(sum((int(i) for i in list(x))))
+
+def sup_digit(x):
+    if len(x) <= 1:
+        return x
+    else:
+        return sup_digit( digsum(x) )
+    
+def superDigit(n, k):
+    a = digsum(n)
+    return sup_digit(str(int(a)*k))
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n = first_multiple_input[0]
+
+    k = int(first_multiple_input[1])
+
+    result = superDigit(n, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
