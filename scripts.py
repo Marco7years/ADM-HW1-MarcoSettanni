@@ -519,4 +519,13 @@ for i in range(n):
 
 print(len(countries))
 
-# 
+# Set .union()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(input())
+english = set(input().split(" "))
+
+m = int(input())
+french = set(input().split(" "))
+
+total = len(french.union(english))
+print(total)
