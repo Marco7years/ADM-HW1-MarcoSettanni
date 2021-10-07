@@ -475,3 +475,48 @@ if __name__ == '__main__':
     fptr.write(str(result) + '\n')
 
     fptr.close()
+
+# Introduction to sets
+
+def average(array):
+    total = 0
+    set_value = set(array)
+    for i in set_value:
+        total+=i
+    return round(total/len(set_value), 3)
+
+if __name__ == '__main__':
+
+# Symmetric Difference
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = input()
+first_inp = input()
+m = input()
+second_inp = input()
+
+first_set = set(first_inp.split())
+second_set = set(second_inp.split())
+
+final_set = {}
+first_inter = set(first_set.difference(second_set))
+second_inter = set(second_set.difference(first_set))
+final_set =  set(first_inter.union(second_inter))
+
+lst = list(final_set)
+lst.sort()
+
+for i in lst:
+    print(i)
+
+# Set .add()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(input())
+countries = set()
+for i in range(n):
+    country = input()
+    countries.add(country)
+
+print(len(countries))
+
+# 
